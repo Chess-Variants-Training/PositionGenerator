@@ -33,10 +33,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ChessDotNet">
+    <Reference Include="ChessDotNet, Version=0.9.1.0, Culture=neutral, PublicKeyToken=95fb3ccd1157343b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\deps\ChessDotNet\ChessDotNet.dll</HintPath>
     </Reference>
-    <Reference Include="ChessDotNet.Variants">
+    <Reference Include="ChessDotNet.Variants, Version=0.9.2.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\deps\ChessDotNet\ChessDotNet.Variants.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Bson, Version=2.2.4.26, Culture=neutral, processorArchitecture=MSIL">

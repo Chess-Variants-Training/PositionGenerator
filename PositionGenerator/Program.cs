@@ -23,7 +23,7 @@ namespace PositionGenerator
             TimeSpan elapsed = ended - started;
             Console.WriteLine("Elapsed time: " + elapsed.ToString());
             Console.WriteLine(gen.GamesSeen + " games seen.");
-            Console.WriteLine(gen.AtomicGames + " were atomic.");
+            Console.WriteLine(gen.GamesUsed + " were used for position generation.");
             Console.WriteLine(gen.UniquePositionsAdded + " unique positions added.");
         }
     }
