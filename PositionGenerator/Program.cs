@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace PositionGenerator
 {
@@ -24,7 +25,8 @@ namespace PositionGenerator
             Console.WriteLine("Elapsed time: " + elapsed.ToString());
             Console.WriteLine(gen.GamesSeen + " games seen.");
             Console.WriteLine(gen.GamesUsed + " were used for position generation.");
-            Console.WriteLine(gen.UniquePositionsAdded + " unique positions added.");
+            Console.WriteLine(gen.UniquePositionsAdded + " unique positions added: ");
+            Console.WriteLine(string.Join(", ", gen.UniquePositionsAddedByVariant.Select(x => x.Key + ": " + x.Value)));
         }
     }
 }

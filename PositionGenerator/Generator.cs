@@ -55,6 +55,12 @@ namespace PositionGenerator
             private set;
         }
 
+        public Dictionary<string, ulong> UniquePositionsAddedByVariant
+        {
+            get;
+            private set;
+        }
+
         public Generator(string mongoConnectionString, string databaseName, string mongoPositionCollectionName, string pgnFilePath)
         {
             connectionString = mongoConnectionString;
@@ -66,6 +72,14 @@ namespace PositionGenerator
             GamesSeen = 0;
             GamesUsed = 0;
             UniquePositionsAdded = 0;
+            UniquePositionsAddedByVariant = new Dictionary<string, ulong>()
+            {
+                { "Antichess", 0 },
+                { "Atomic", 0 },
+                { "KingOfTheHill", 0 },
+                { "Horde", 0 },
+                { "ThreeCheck", 0 }
+            };
 
             GetCollection();
         }
@@ -257,6 +271,7 @@ namespace PositionGenerator
                 {
                     positionCollection.InsertOne(position);
                     UniquePositionsAdded++;
+                    UniquePositionsAddedByVariant[variant]++;
                 }
             }
             mre.Set();
