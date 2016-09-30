@@ -177,7 +177,16 @@ namespace PositionGenerator
             PgnReader<TGame> pgnReader = new PgnReader<TGame>();
             TGame copy = new TGame();
 
-            pgnReader.ReadPgnFromString(pgn);
+            try
+            {
+                pgnReader.ReadPgnFromString(pgn);
+            }
+            catch (PgnException)
+            {
+                Console.WriteLine("[Warning] PGN exception for variant {0}; {1}", variant, pgn);
+                return;
+                // I once got a PGN with an atomic game where self-checks were allowed. So to handle this case and similar rule changes like this, I have to catch the PgnException.
+            }
             string fen;
             ReadOnlyCollection<DetailedMove> moves = pgnReader.Game.Moves;
             if (moves.Count >= 3) // there will never be a mate-in-one position if white hasn't done two moves
